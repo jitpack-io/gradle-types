@@ -1,0 +1,37 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+group='com.github.jitpack-io'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    groovy2_0
+    groovy2_3
+}
+
+sourceSets {
+    groovy2_0.groovy.srcDirs = main.groovy.srcDirs
+    groovy2_3.groovy.srcDirs = main.groovy.srcDirs
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    
+    groovy2_0Compile 'org.codehaus.groovy:groovy-all:2.0.5'
+    groovy2_3Compile 'org.codehaus.groovy:groovy-all:2.3.0'
+}
+
+sourceSets.all { set ->
+    def jarTask = task("${set.name}Jar", type: Jar) {
+        classifier = set.name
+        from set.output
+    }
+
+    artifacts {
+        archives jarTask
+    }
+}
