@@ -1,6 +1,6 @@
 # gradle-types
 
-Builds groovy source with different groovy versions and publishes each build as a separate jar:
+Builds a groovy project with different groovy versions and publishes each build as a separate jar:
 
  - gradle-types-1.0.pom
  - gradle-types-1.0.jar // default. groovy 2.4
